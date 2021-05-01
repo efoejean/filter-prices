@@ -50,9 +50,14 @@ function render(maxPrice) {
 
 document.body.appendChild(ul);
 render();
-
 document
   .querySelector('input')
   .addEventListener('input', ({ target: { value } }) => {
     render(Number(value));
   });
+
+function stockCatalog(lists) {
+  const stockList = lists.filter(({ stocked }) => stocked === true);
+  return stockList;
+}
+const stockItem = stockCatalog(catalog);
