@@ -69,7 +69,13 @@ function renderStock(listStock) {
     )
     .join('');
 }
-renderStock(stockItem);
+
 document
   .querySelector('input[type="checkbox"]')
-  .addEventListener('change', () => {});
+  .addEventListener('change', () => {
+    if (document.querySelector('input[type="checkbox"]').checked) {
+      renderStock(stockItem);
+    } else {
+      render();
+    }
+  });
