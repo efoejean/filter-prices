@@ -1,3 +1,4 @@
+const byName = '';
 const catalog = [
   {
     category: 'Sporting Goods',
@@ -62,11 +63,15 @@ function stockCatalog(lists) {
 }
 const stockItem = stockCatalog(catalog);
 
-function renderStock(listStock) {
+// startWith filter
+function StartWithSearch(letters, textInput) {
+  const startList = letters.filter(({ name }) => name.startsWith(textInput));
+  return startList;
+}
+
+function renderCatalog(listStock) {
   ul.innerHTML = listStock
-    .map(
-      ({ name, price, stocked }) => `<li>${name} - ${price} - ${stocked}</li>`,
-    )
+    .map(({ name, price }) => `<li>${name} - ${price} </li>`)
     .join('');
 }
 
@@ -74,7 +79,7 @@ document
   .querySelector('input[type="checkbox"]')
   .addEventListener('change', () => {
     if (document.querySelector('input[type="checkbox"]').checked) {
-      renderStock(stockItem);
+      renderCatalog(stockItem);
     } else {
       render();
     }
