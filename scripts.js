@@ -1,4 +1,4 @@
-const byName = '';
+let byName = '';
 const catalog = [
   {
     category: 'Sporting Goods',
@@ -68,6 +68,7 @@ function StartWithSearch(letters, textInput) {
   const startList = letters.filter(({ name }) => name.startsWith(textInput));
   return startList;
 }
+const result = StartWithSearch(catalog, byName);
 
 function renderCatalog(listStock) {
   ul.innerHTML = listStock
@@ -83,4 +84,10 @@ document
     } else {
       render();
     }
+  });
+
+document
+  .querySelector('input[type="text"]')
+  .addEventListener('input', event => {
+    byName = event.target.value;
   });
