@@ -61,3 +61,12 @@ function stockCatalog(lists) {
   return stockList;
 }
 const stockItem = stockCatalog(catalog);
+
+function renderStock(listStock) {
+  ul.innerHTML = listStock
+    .map(
+      ({ name, price, stocked }) => `<li>${name} - ${price} - ${stocked}</li>`,
+    )
+    .join('');
+}
+renderStock(stockItem);
