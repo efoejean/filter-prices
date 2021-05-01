@@ -70,3 +70,6 @@ function renderStock(listStock) {
     .join('');
 }
 renderStock(stockItem);
+document
+  .querySelector('input[type="checkbox"]')
+  .addEventListener('change', () => {});
