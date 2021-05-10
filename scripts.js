@@ -1,4 +1,8 @@
 let byName = '';
+
+const tbody = document.querySelector('tbody');
+const { content } = document.querySelector('template');
+
 const catalog = [
   {
     category: 'Sporting Goods',
@@ -44,12 +48,17 @@ function render(maxPrice) {
     ? catalog.filter(({ price }) => price.slice(1) < maxPrice)
     : catalog;
 
-  ul.innerHTML = filteredCatalog
-    .map(({ name, price }) => `<li>${name} - ${price}</li>`)
-    .join('');
+  tbody.innerHTML = '';
+
+  filteredCatalog.forEach(({ name, price }) => {
+    const newRow = content.cloneNode(true);
+    const tds = newRow.querySelectorAll('td');
+    tds[0].innerHTML = name;
+    tds[1].innerHTML = price;
+    tbody.appendChild(newRow);
+  });
 }
 
-document.body.appendChild(ul);
 render();
 document
   .querySelector('input')
